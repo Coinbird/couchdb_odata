@@ -8,7 +8,7 @@ http://localhost:5984/YOUR-DB-HERE/_design/odata/_show/odata_service/_design/oda
 
 My intent was to use Tableau Public with this CouchDB OData data source. 
 * I pass the above URL format, I get "Bad OData format. Make sure you are using a URL that points to a valid OData Source."
-* But, passing http://localhost:5984/YOUR-DATA/_design/odata/_list/odata_convert/everything appears to work, at least at a superficial level!
+* But, passing http://localhost:5984/YOUR-DB-HERE/_design/odata/_list/odata_convert/everything appears to work, at least at a superficial level.
 
 
 ## Original Readme text:
