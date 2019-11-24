@@ -1,7 +1,12 @@
+
+This fork adds a dump of the design doc no longer available below (found on wayback machine.) Also, see https://github.com/kangu/couchdb_odata for an updated readme.
+
+## Original Readme text:
+
 A show and a list to serve your data from couchdb as an OData feed.  
   
 ==HowTo==    
-  
+
 I've uploaded a complete design document to cloudant at http://nisbus.cloudant.com/odata/_design/odata/  
 Copy that to your db, add views if you like to filter your data.  
 Your OData service will now live here:  
