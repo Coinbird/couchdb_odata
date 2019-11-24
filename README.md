@@ -7,7 +7,8 @@ Even though this was a really old repo, I was able to view the ddoc correctly in
 http://localhost:5984/YOUR-DB-HERE/_design/odata/_show/odata_service/_design/odata
 
 My intent was to use Tableau Public with this CouchDB OData data source. 
-However, I get "Bad OData format. Make sure you are using a URL that points to a valid OData Source." So, appears that this needs tweaking to work with Tableau. I might try a different OData client as an experiment
+* I pass the above URL format, I get "Bad OData format. Make sure you are using a URL that points to a valid OData Source."
+* But, passing http://localhost:5984/YOUR-DATA/_design/odata/_list/odata_convert/everything appears to work, at least at a superficial level!
 
 
 ## Original Readme text:
