@@ -1,5 +1,5 @@
 
-This fork adds a dump of the design doc no longer available below (found on wayback machine.) Also, see https://github.com/kangu/couchdb_odata for an updated readme.
+This fork adds a dump of design_doc/couchdb_odata.json no longer available below (found on wayback machine.) Also, see https://github.com/kangu/couchdb_odata for an updated readme.
 
 Not sure if this still works, but intent is to use Tableau Public with CouchDB.
 
