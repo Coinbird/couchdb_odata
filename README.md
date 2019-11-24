@@ -1,6 +1,8 @@
 
 This fork adds a dump of the design doc no longer available below (found on wayback machine.) Also, see https://github.com/kangu/couchdb_odata for an updated readme.
 
+Not sure if this still works, but intent is to use Tableau Public with CouchDB.
+
 ## Original Readme text:
 
 A show and a list to serve your data from couchdb as an OData feed.  
