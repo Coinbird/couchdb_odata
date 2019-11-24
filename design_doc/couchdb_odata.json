@@ -1,6 +1,5 @@
 {
     "_id": "_design/odata",
-    "_rev": "60-bc423592ce98f92bd3a3ffbc0fdf854f",
     "language": "javascript",
     "views": {
         "everything": {
