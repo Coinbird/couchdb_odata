@@ -1,7 +1,12 @@
 
 This fork adds a dump of [design doc](design_doc/couchdb_odata.json) no longer available below (found on wayback machine.) Also, see https://github.com/kangu/couchdb_odata for an updated readme.
 
-Not sure if this still works, but intent is to use Tableau Public with CouchDB.
+Be sure to paste the design doc directly from the source. Pasting from Raw github view seems to strip the `"` characters.
+
+Even though this was a really old repo, I was able to view the ddoc correctly in CouchDB 2.3.1.
+
+Not sure if this still actually works, but intent is to use Tableau Public with CouchDB and the OData data source.
+http://localhost:5984/YOUR-DB-HERE/_design/odata/_show/odata_service/_design/odata
 
 ## Original Readme text:
 
