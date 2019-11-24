@@ -6,8 +6,8 @@ Be sure to paste the design doc directly from the source. Pasting from Raw githu
 Even though this was a really old repo, I was able to view the ddoc correctly in CouchDB 2.3.1.
 http://localhost:5984/YOUR-DB-HERE/_design/odata/_show/odata_service/_design/odata
 
-Not sure if this still actually works, but intent is to use Tableau Public with CouchDB and the OData data source. 
-However, I get "Bad OData format. Make sure you are using a URL that points to a valid OData Source."
+My intent was to use Tableau Public with this CouchDB OData data source. 
+However, I get "Bad OData format. Make sure you are using a URL that points to a valid OData Source." So, appears that this needs tweaking to work with Tableau. I might try a different OData client as an experiment
 
 
 ## Original Readme text:
