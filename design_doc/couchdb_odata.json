@@ -1,0 +1,18 @@
+{
+    "_id": "_design/odata",
+    "_rev": "60-bc423592ce98f92bd3a3ffbc0fdf854f",
+    "language": "javascript",
+    "views": {
+        "everything": {
+            "map": "function(doc) {\n    emit(doc.id,doc);\n}"
+        }
+    },
+    "lists": {
+        "odata_convert": "function(head, req) {\n start({'code':200,'headers':{'Content-Type':'application/atom+xml'}});   var host = req.headers.Host;\n    var path = req.path;\n  var db = req.path[0];\n  var pathurl = \"\";\n    for(var b in path){\n\tif (b < path.length-1)\n\t    pathurl = pathurl+'/'+path[b];\n    }\n    var baseUrl = \"http://\"+host+pathurl;\n var returnBody = '<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?><feed xml:base=\"'+baseUrl+'\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">';\n    returnBody = returnBody+'<id>'+baseUrl+'/'+path[path.length-1]+'</id>'; returnBody = returnBody+'<title type=\"text\">'+path[path.length-1]+'</title>';\n returnBody = returnBody+'<updated>'+new Date().toISOString()+'</updated>';\n returnBody = returnBody+'<link rel=\"self\" href=\"'+baseUrl+'\" type=\"application/rss+xml\"></link>';\n\t  var row;\n    while(row = getRow())\n    {\n\treturnBody = returnBody+'<entry>';\n\treturnBody = returnBody+'<id>'+'http://'+host+'/'+db+'/'+row.id+'</id>';\n\t returnBody = returnBody+'<title>'+row.id+'</title>';\n\t returnBody = returnBody+'<updated>'+new Date().toISOString()+'</updated>';\n\t returnBody = returnBody+'<author><name>couchdb</name></author>';\n\t returnBody = returnBody+'<content type=\"application/xml\">';\n\t returnBody = returnBody+'<m:properties>';\n\tfor(var prop in row.value){\n\t    if(row.value.hasOwnProperty(prop)){\t\t\t    \n\t\tif(typeof(row.value[prop]) === \"number\")\t\t    \n\t\t{\n\t\t    returnBody = returnBody+'<d:'+prop+' m:type=\"Edm.Double\">'+row.value[prop]+'</d:'+prop+'>';\t\t    \n\t\t}\n\t\telse if (!isNaN(Date.parse(row.value[prop])))\n\t\t{\n\t\t    var d = Date.parse(row.value[prop]);\n\t\t    var date = new Date(d).toUTCString();\n\t\t    returnBody = returnBody+'<d:'+prop+' m:type=\"Edm.DateTime\">'+date+'</d:'+prop+'>';    \n\t\t}\n\t\telse\n\t\t{\n\t\t    returnBody = returnBody+'<d:'+prop+'>'+row.value[prop]+'</d:'+prop+'>';    \n\t\t}\n\t    }\n\t}\n\treturnBody = returnBody+'</m:properties>';\n\treturnBody = returnBody+'</content>';\n\treturnBody = returnBody+'</entry>';\n    }\n    returnBody = returnBody+'</feed>';\n return returnBody;}"
+    },
+    "updates": {},
+    "shows": {
+        "odata_service": "function(doc, req) {  \n    var host = req.headers.Host;\n    var path = req.path;\n    var pathurl = \"\";\n    for(var b in path){\n\tif (b < 3)\n\t    pathurl = pathurl+'/'+path[b];\n    }\n    var baseUrl = \"http://\"+host+pathurl+\"/_list/odata_convert/\";\n\n    var returnBody = '<service xmlns:atom=\"http://www.w3.org/2005/Atom\" xmlns:app=\"http://www.w3.org/2007/app\" xmlns=\"http://www.w3.org/2007/app\" xml:base=\\\"'+baseUrl+'\\\"><workspace><atom:title>'+path[path.length-1]+'</atom:title>';\n    if(doc){\n\tif (doc.views){\n\t    for(var prop in doc.views) {\n\t\tif(doc.views.hasOwnProperty(prop)){\n\t\t    returnBody = returnBody+'<collection href=\"'+baseUrl+prop+'\\\">';\n\t\t    returnBody = returnBody+'<atom:title>'+\"\\\"\"+prop+\"\\\"\"+'</atom:title></collection>';\n\t\t}\n\t    }\n\t}\n\n    }\n    returnBody = returnBody+'</workspace></service>';\n    return {\n\theaders : {\n\t    \"Content-Type\" : \"application/xml;charset=utf-8\"\n\t},\n\tbody : returnBody};\n}"
+    },
+    "id": "_design/odata"
+}
